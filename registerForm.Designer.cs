@@ -115,7 +115,6 @@ namespace ExampleSQLApp
             // 
             // mainpanel
             // 
-            this.mainpanel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.mainpanel.AutoSize = true;
             this.mainpanel.Controls.Add(this.linkLabel1);
             this.mainpanel.Controls.Add(this.textBox2);
@@ -129,6 +128,7 @@ namespace ExampleSQLApp
             this.mainpanel.Controls.Add(this.pictureBox4);
             this.mainpanel.Controls.Add(this.pictureBox2);
             this.mainpanel.Controls.Add(this.label1);
+            this.mainpanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mainpanel.Location = new System.Drawing.Point(0, 0);
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.Size = new System.Drawing.Size(548, 694);
@@ -143,12 +143,13 @@ namespace ExampleSQLApp
             this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Black;
-            this.linkLabel1.Location = new System.Drawing.Point(185, 635);
+            this.linkLabel1.Location = new System.Drawing.Point(195, 625);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(155, 25);
             this.linkLabel1.TabIndex = 10;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Уже є аккаунт?";
+            this.linkLabel1.Text = "Вже є аккаунт?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // textBox2

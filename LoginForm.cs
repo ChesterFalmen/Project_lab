@@ -43,10 +43,6 @@ namespace ExampleSQLApp
 
         }
 
-        private void passField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         Point lastPoint;
         private void mainpanel_MouseMove(object sender, MouseEventArgs e)
@@ -136,6 +132,42 @@ namespace ExampleSQLApp
             this.Hide();
             registerForm register = new registerForm();
             register.Show();
+        }
+
+        private void loginField_Leave(object sender, EventArgs e)
+        {
+            if (loginField.Text == "")
+            {
+                loginField.Text = "username";
+                loginField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void loginField_Enter(object sender, EventArgs e)
+        {
+            if (loginField.Text == "username")
+            {
+                loginField.Text = "";
+                loginField.ForeColor = Color.Black;
+            }
+        }
+
+        private void passField_Leave(object sender, EventArgs e)
+        {
+            if (passField.Text == "")
+            {
+                passField.Text = "password";
+                passField.ForeColor = Color.Gray;
+            }
+        }
+
+        private void passField_Enter(object sender, EventArgs e)
+        {
+            if (passField.Text == "password")
+            {
+                passField.Text = "";
+                passField.ForeColor = Color.Black;
+            }
         }
     }
 }

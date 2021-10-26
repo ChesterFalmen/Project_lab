@@ -118,6 +118,7 @@ namespace ExampleSQLApp
             // 
             this.passField.BackColor = System.Drawing.SystemColors.HighlightText;
             this.passField.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.passField.ForeColor = System.Drawing.Color.Gray;
             this.passField.Location = new System.Drawing.Point(120, 332);
             this.passField.Name = "passField";
             this.passField.PasswordChar = '*';
@@ -125,19 +126,22 @@ namespace ExampleSQLApp
             this.passField.TabIndex = 5;
             this.passField.Text = "password";
             this.passField.UseSystemPasswordChar = true;
-            this.passField.TextChanged += new System.EventHandler(this.passField_TextChanged);
+            this.passField.Enter += new System.EventHandler(this.passField_Enter);
+            this.passField.Leave += new System.EventHandler(this.passField_Leave);
             // 
             // loginField
             // 
             this.loginField.BackColor = System.Drawing.SystemColors.HighlightText;
             this.loginField.Font = new System.Drawing.Font("Microsoft Sans Serif", 22.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.loginField.ForeColor = System.Drawing.Color.Gray;
             this.loginField.Location = new System.Drawing.Point(120, 245);
             this.loginField.Multiline = true;
             this.loginField.Name = "loginField";
             this.loginField.Size = new System.Drawing.Size(353, 56);
             this.loginField.TabIndex = 4;
             this.loginField.Text = "username";
-            this.loginField.TextChanged += new System.EventHandler(this.loginField_TextChanged);
+            this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
+            this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
             // pictureBox2
             // 

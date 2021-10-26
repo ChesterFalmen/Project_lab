@@ -15,6 +15,12 @@ namespace ExampleSQLApp
         public MainForm()
         {
             InitializeComponent();
+            string[] countries = { "Бразилия", "Аргентина", "Чили", "Уругвай", "Колумбия" };
+            listBox1.Items.AddRange(countries);
+            listBox2.Items.AddRange(countries);
+
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
+            listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
         }
 
         private void exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -41,6 +47,31 @@ namespace ExampleSQLApp
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
+        }
+        void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sCountry_firstlist = listBox1.SelectedItem.ToString();
+            //MessageBox.Show(selectedCountry);
+        }
+        void listBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sCountry_secondlist = listBox1.SelectedItem.ToString();
+            //MessageBox.Show(selectedCountry);
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
