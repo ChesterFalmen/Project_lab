@@ -98,7 +98,6 @@ namespace ExampleSQLApp
                         listBox3.Items.Add(reader[3]);
                     }
                     connection.Close();
-                    filled = false;
                 }
             }
 
