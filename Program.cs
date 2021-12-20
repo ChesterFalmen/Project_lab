@@ -8,15 +8,20 @@ namespace ExampleSQLApp
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
         [STAThread]
         static void Main()
         {
+            bool TEST = true;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            if (TEST)
+            {
+                Application.Run(new MainForm());
+            }
+            else
+            {
+                Application.Run(new LoginForm());
+            }
         }
     }
 }

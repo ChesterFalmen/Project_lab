@@ -169,5 +169,10 @@ namespace ExampleSQLApp
                 passField.ForeColor = Color.Black;
             }
         }
+
+        private void loginField_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
