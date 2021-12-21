@@ -1,15 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExampleSQLApp
+namespace Booking
 {
     public partial class LoginForm : Form
     {
@@ -47,7 +42,7 @@ namespace ExampleSQLApp
         Point lastPoint;
         private void mainpanel_MouseMove(object sender, MouseEventArgs e)
         {
-            if(e.Button == MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 this.Left += e.X - lastPoint.X;
                 this.Top += e.Y - lastPoint.Y;
@@ -169,7 +164,6 @@ namespace ExampleSQLApp
                 passField.ForeColor = Color.Black;
             }
         }
-
         private void loginField_TextChanged_1(object sender, EventArgs e)
         {
 

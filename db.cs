@@ -1,27 +1,27 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.IO;
 using System.Threading.Tasks;
 
-namespace ExampleSQLApp
+namespace Booking
 {
     class db
     {
-        string string_connection = "server=localhost;port=3306;username=root;password=;database=project_program";
-        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=;database=project_program");
-    
+        static string string_connection = "server=localhost;port=3306;username=root;password=;database=project_program";
+        MySqlConnection connection = new MySqlConnection(string_connection);
+
+
         public bool openConnection()
         {
-            if(connection.State == System.Data.ConnectionState.Closed)
+            if (connection.State == System.Data.ConnectionState.Closed)
             {
-                if(!CheckDbConnection(string_connection))
+                if (!CheckDbConnection(string_connection))
                 {
                     return false;
                 }
                 else
                 {
+                    connection.Open();
                     return true;
                 }
             }
@@ -51,7 +51,7 @@ namespace ExampleSQLApp
         {
             return connection;
         }
-        private bool CheckDbConnection(string string_connection)
+        public bool CheckDbConnection(string string_connection)
         {
             try
             {
@@ -61,7 +61,7 @@ namespace ExampleSQLApp
                     return true;
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 return false;
             }

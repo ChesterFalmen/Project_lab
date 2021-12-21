@@ -1,5 +1,5 @@
 ﻿
-namespace ExampleSQLApp
+namespace Booking
 {
     partial class LoginForm
     {

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ExampleSQLApp
+namespace Booking
 {
     public partial class registerForm : Form
     {
