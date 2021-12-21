@@ -55,6 +55,7 @@ namespace Booking
             this.label_name = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.listBox5 = new System.Windows.Forms.ListBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // exit
@@ -352,12 +353,20 @@ namespace Booking
             this.listBox5.Size = new System.Drawing.Size(226, 129);
             this.listBox5.TabIndex = 32;
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(558, 495);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(218, 22);
+            this.dateTimePicker1.TabIndex = 34;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSlateGray;
             this.ClientSize = new System.Drawing.Size(974, 865);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.listBox5);
             this.Controls.Add(this.label_name);
@@ -424,5 +433,6 @@ namespace Booking
         private System.Windows.Forms.Label label_name;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ListBox listBox5;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
