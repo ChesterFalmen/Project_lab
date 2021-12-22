@@ -78,7 +78,6 @@ namespace Booking
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Ще немає акаунта?";
             this.linkLabel1.VisitedLinkColor = System.Drawing.Color.Gray;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // exit
@@ -140,7 +139,6 @@ namespace Booking
             this.loginField.Size = new System.Drawing.Size(353, 56);
             this.loginField.TabIndex = 4;
             this.loginField.Text = "username";
-            this.loginField.TextChanged += new System.EventHandler(this.loginField_TextChanged_1);
             this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
             this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
@@ -153,7 +151,6 @@ namespace Booking
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox1
             // 
@@ -164,7 +161,6 @@ namespace Booking
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label1
             // 
@@ -176,7 +172,6 @@ namespace Booking
             this.label1.TabIndex = 0;
             this.label1.Text = "Авторизація";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // LoginForm
             // 
@@ -187,7 +182,6 @@ namespace Booking
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.mainpanel.ResumeLayout(false);
             this.mainpanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();

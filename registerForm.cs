@@ -1,12 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Booking
@@ -106,23 +101,9 @@ namespace Booking
             }
         }
 
-        private void mainpanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void autorizationButton_Click(object sender, EventArgs e)
-        {
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -145,18 +126,18 @@ namespace Booking
             }
             else
             {
-                db DB = new db();
-                if (!DB.openConnection())
+                DB DB = new DB();
+                if (!DB.OpenConnection())
                 {
                     MessageBox.Show("Немає підключення до бази даних!");
                     return;
                 }
 
-                if (isUserExists())
+                if (IsUserExists())
                 { 
                     return; 
                 }
-                MySqlCommand command = new MySqlCommand("INSERT INTO `project_program`.`users` (`login`, `password`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", DB.getConnection());
+                MySqlCommand command = new MySqlCommand("INSERT INTO `project_program`.`users` (`login`, `password`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", DB.GetConnection());
 
                 command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
                 command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
@@ -175,18 +156,18 @@ namespace Booking
                     MessageBox.Show("Аккаунт не був створений!");
                 }
 
-                DB.closeConnection();
+                DB.CloseConnection();
             }
         }
-        public Boolean isUserExists()
+        public Boolean IsUserExists()
         {
-            db DB = new db();
+            DB DB = new DB();
 
             DataTable table = new DataTable();
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL", DB.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL", DB.GetConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
 
             adapter.SelectCommand = command;
@@ -204,26 +185,11 @@ namespace Booking
             
         }
 
-        private void exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void linkLabel1_Click(object sender, EventArgs e)
         {
             this.Hide();
             LoginForm loginform = new LoginForm();
             loginform.Show();
-        }
-
-        private void userNameField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
     }
 }

@@ -133,7 +133,6 @@ namespace Booking
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.Size = new System.Drawing.Size(548, 694);
             this.mainpanel.TabIndex = 1;
-            this.mainpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainpanel_Paint);
             this.mainpanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainpanel_MouseDown);
             this.mainpanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainpanel_MouseMove);
             // 
@@ -149,7 +148,6 @@ namespace Booking
             this.linkLabel1.TabIndex = 10;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Вже є аккаунт?";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
             // 
             // textBox2
@@ -165,7 +163,6 @@ namespace Booking
             this.textBox2.TabIndex = 9;
             this.textBox2.Text = "Прізвище";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // textBox1
             // 
@@ -196,7 +193,6 @@ namespace Booking
             this.exit.Text = "X";
             this.exit.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.exit.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exit.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.exit_LinkClicked);
             this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // userSurNameField
@@ -224,7 +220,6 @@ namespace Booking
             this.userNameField.Size = new System.Drawing.Size(353, 50);
             this.userNameField.TabIndex = 4;
             this.userNameField.Text = "Введіть ім\'я";
-            this.userNameField.TextChanged += new System.EventHandler(this.userNameField_TextChanged);
             this.userNameField.Enter += new System.EventHandler(this.userNameField_Enter);
             this.userNameField.Leave += new System.EventHandler(this.userNameField_Leave);
             // 

@@ -13,32 +13,6 @@ namespace Booking
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loginField_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-
         Point lastPoint;
         private void mainpanel_MouseMove(object sender, MouseEventArgs e)
         {
@@ -49,19 +23,9 @@ namespace Booking
             }
         }
 
-        private void buttonLogin_Click(object sender, MouseEventArgs e)
-        {
-
-        }
-
         private void mainpanel_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
-        }
-
-        private void mainpanel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -69,7 +33,7 @@ namespace Booking
             String loginUser = loginField.Text;
             String passUser = passField.Text;
 
-            db DB = new db();
+            DB DB = new DB();
 
             if (loginField.Text == "username")
             {
@@ -82,7 +46,7 @@ namespace Booking
                 return;
             }
 
-            if (!DB.openConnection())
+            if (!DB.OpenConnection())
             {
                 MessageBox.Show("Немає підключення до бази даних!");
                 return;
@@ -92,7 +56,7 @@ namespace Booking
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL AND `password` = @uP", DB.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL AND `password` = @uP", DB.GetConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -109,17 +73,12 @@ namespace Booking
             {
                 MessageBox.Show("Не вірний пароль, або акаунт не знайдений!");
             }
-            DB.closeConnection();
+            DB.CloseConnection();
         }
 
         private void exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
         }
 
         private void linkLabel1_Click(object sender, EventArgs e)
@@ -164,7 +123,8 @@ namespace Booking
                 passField.ForeColor = Color.Black;
             }
         }
-        private void loginField_TextChanged_1(object sender, EventArgs e)
+
+        private void mainpanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

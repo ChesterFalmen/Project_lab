@@ -1,18 +1,15 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.IO;
-using System.Threading.Tasks;
 
 namespace Booking
 {
-    class db
+    class DB
     {
-        static string string_connection = "server=localhost;port=3306;username=root;password=;database=project_program";
+        const string string_connection = "server=localhost;port=3306;username=root;password=;database=project_program";
         MySqlConnection connection = new MySqlConnection(string_connection);
-
-
-        public bool openConnection()
+        
+        public bool OpenConnection()
         {
+            
             if (connection.State == System.Data.ConnectionState.Closed)
             {
                 if (!CheckDbConnection(string_connection))
@@ -39,7 +36,7 @@ namespace Booking
             }
         }
 
-        public void closeConnection()
+        public void CloseConnection()
         {
             if (connection.State == System.Data.ConnectionState.Open)
             {
@@ -47,7 +44,7 @@ namespace Booking
             }
         }
 
-        public MySqlConnection getConnection()
+        public MySqlConnection GetConnection()
         {
             return connection;
         }

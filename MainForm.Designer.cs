@@ -90,7 +90,6 @@ namespace Booking
             this.label1.TabIndex = 9;
             this.label1.Text = "Меню бронювання";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // listBox1
             // 
@@ -112,7 +111,6 @@ namespace Booking
             this.label2.Size = new System.Drawing.Size(211, 25);
             this.label2.TabIndex = 11;
             this.label2.Text = "Звідки відправлятись";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -124,7 +122,6 @@ namespace Booking
             this.label3.Size = new System.Drawing.Size(157, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Куди прибувати";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // listBox2
             // 
@@ -135,7 +132,6 @@ namespace Booking
             this.listBox2.Name = "listBox2";
             this.listBox2.Size = new System.Drawing.Size(226, 129);
             this.listBox2.TabIndex = 13;
-            this.listBox2.SelectedIndexChanged += new System.EventHandler(this.listBox2_SelectedIndexChanged_1);
             // 
             // text_from
             // 
@@ -145,7 +141,6 @@ namespace Booking
             this.text_from.Name = "text_from";
             this.text_from.Size = new System.Drawing.Size(165, 26);
             this.text_from.TabIndex = 14;
-            this.text_from.TextChanged += new System.EventHandler(this.text_from_TextChanged);
             // 
             // label4
             // 
@@ -157,7 +152,6 @@ namespace Booking
             this.label4.Size = new System.Drawing.Size(124, 25);
             this.label4.TabIndex = 15;
             this.label4.Text = "Відправка з:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -169,7 +163,6 @@ namespace Booking
             this.label5.Size = new System.Drawing.Size(122, 25);
             this.label5.TabIndex = 17;
             this.label5.Text = "Відправка у:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // text_to
             // 
@@ -201,7 +194,6 @@ namespace Booking
             this.label6.Size = new System.Drawing.Size(190, 25);
             this.label6.TabIndex = 19;
             this.label6.Text = "Дата відправлення";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // clear_btn
             // 
@@ -225,7 +217,6 @@ namespace Booking
             this.label7.Size = new System.Drawing.Size(196, 25);
             this.label7.TabIndex = 22;
             this.label7.Text = "Дата відправлення:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // textBox_date_depart
             // 
@@ -235,7 +226,6 @@ namespace Booking
             this.textBox_date_depart.Name = "textBox_date_depart";
             this.textBox_date_depart.Size = new System.Drawing.Size(165, 26);
             this.textBox_date_depart.TabIndex = 21;
-            this.textBox_date_depart.TextChanged += new System.EventHandler(this.textBox1_date_TextChanged);
             // 
             // label8
             // 
@@ -247,7 +237,6 @@ namespace Booking
             this.label8.Size = new System.Drawing.Size(160, 25);
             this.label8.TabIndex = 23;
             this.label8.Text = "Дата прибуття:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBox_date_arrival
             // 
@@ -298,7 +287,6 @@ namespace Booking
             this.label10.Size = new System.Drawing.Size(62, 25);
             this.label10.TabIndex = 27;
             this.label10.Text = "Клас:";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // textBox_cost
             // 
@@ -319,7 +307,6 @@ namespace Booking
             this.label11.Size = new System.Drawing.Size(151, 25);
             this.label11.TabIndex = 29;
             this.label11.Text = "Варість білету:";
-            this.label11.Click += new System.EventHandler(this.label11_Click);
             // 
             // label_name
             // 
@@ -397,7 +384,6 @@ namespace Booking
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MainForm_MouseMove);
             this.ResumeLayout(false);

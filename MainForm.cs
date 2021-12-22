@@ -23,17 +23,17 @@ namespace Booking
         {
             try
             {
-                db DB = new db();
-                DB.openConnection();
+                DB DB = new DB();
+                DB.OpenConnection();
                 
 
-                if (DB.getConnection() == null)
+                if (DB.GetConnection() == null)
                 {
                     MessageBox.Show("Немає підключення до бази даних!");
                     this.Close();
                     return;
                 }
-                MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` ", DB.getConnection());
+                MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` ", DB.GetConnection());
                 
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -44,7 +44,7 @@ namespace Booking
                     listBox4.Items.Add(reader[4]);
                     listBox5.Items.Add(reader[5]);
                 }
-                DB.closeConnection();
+                DB.CloseConnection();
             }
             catch
             {
@@ -55,11 +55,6 @@ namespace Booking
         private void exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Application.Exit();
-        }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-
         }
 
         Point lastPoint;
@@ -86,17 +81,17 @@ namespace Booking
 
                 try
                 {
-                    db DB = new db();
-                    DB.openConnection();
+                    DB DB = new DB();
+                    DB.OpenConnection();
 
-                    if (DB.getConnection() == null)
+                    if (DB.GetConnection() == null)
                     {
                         MessageBox.Show("Немає підключення до бази даних!");
                         this.Close();
                         return;
                     }
 
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_from` = '" + listBox1.SelectedItem.ToString() + "'", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_from` = '" + listBox1.SelectedItem.ToString() + "'", DB.GetConnection());
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox2.Items.Clear();
                     listBox3.Items.Clear();
@@ -107,7 +102,7 @@ namespace Booking
                         listBox3.Items.Add(reader[3]);
                         listBox5.Items.Add(reader[5]);
                     }
-                    DB.closeConnection();
+                    DB.CloseConnection();
                 }
                 catch
                 {
@@ -125,16 +120,16 @@ namespace Booking
 
                 try
                 {
-                    db DB = new db();
-                    DB.openConnection();
+                    DB DB = new DB();
+                    DB.OpenConnection();
 
-                    if (DB.getConnection() == null)
+                    if (DB.GetConnection() == null)
                     {
                         MessageBox.Show("Немає підключення до бази даних!");
                         return;
                     }
 
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_to` = '" + listBox2.SelectedItem.ToString() + "'", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_to` = '" + listBox2.SelectedItem.ToString() + "'", DB.GetConnection());
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
                     listBox3.Items.Clear();
@@ -145,7 +140,7 @@ namespace Booking
                         listBox3.Items.Add(reader[3]);
                         listBox5.Items.Add(reader[5]);
                     }
-                    DB.closeConnection();
+                    DB.CloseConnection();
                 }
                 catch 
                 {
@@ -164,10 +159,10 @@ namespace Booking
 
                 try
                 {
-                    db DB = new db();
-                    DB.openConnection();
+                    DB DB = new DB();
+                    DB.OpenConnection();
 
-                    if (DB.getConnection() == null)
+                    if (DB.GetConnection() == null)
                     {
                         MessageBox.Show("Немає підключення до бази даних!");
                         return;
@@ -176,7 +171,7 @@ namespace Booking
                     //selected = selected.Replace('.', '-');
                     //Convert.ToDateTime(selected);
                     //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_depart` = '" + listBox3.SelectedItem.ToString() + "'", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_depart` = '" + listBox3.SelectedItem.ToString() + "'", DB.GetConnection());
                     //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
@@ -190,7 +185,7 @@ namespace Booking
                         listBox4.Items.Add(reader[4]);
                         listBox5.Items.Add(reader[5]);
                     }
-                    DB.closeConnection();
+                    DB.CloseConnection();
                 }
                 catch
                 {
@@ -208,10 +203,10 @@ namespace Booking
 
                 try
                 {
-                    db DB = new db();
-                    DB.openConnection();
+                    DB DB = new DB();
+                    DB.OpenConnection();
 
-                    if (DB.getConnection() == null)
+                    if (DB.GetConnection() == null)
                     {
                         MessageBox.Show("Немає підключення до бази даних!");
                         return;
@@ -220,7 +215,7 @@ namespace Booking
                     //selected = selected.Replace('.', '-');
                     //Convert.ToDateTime(selected);
                     //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_arrival` = '" + listBox4.SelectedItem.ToString() + "'", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_arrival` = '" + listBox4.SelectedItem.ToString() + "'", DB.GetConnection());
                     //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
@@ -234,7 +229,7 @@ namespace Booking
                         listBox3.Items.Add(reader[3]);
                         listBox5.Items.Add(reader[5]);
                     }
-                    DB.closeConnection();
+                    DB.CloseConnection();
                 }
                 catch
                 {
@@ -252,10 +247,10 @@ namespace Booking
 
                 try
                 {
-                    db DB = new db();
-                    DB.openConnection();
+                    DB DB = new DB();
+                    DB.OpenConnection();
 
-                    if (DB.getConnection() == null)
+                    if (DB.GetConnection() == null)
                     {
                         MessageBox.Show("Немає підключення до бази даних!");
                         return;
@@ -264,7 +259,7 @@ namespace Booking
                     //selected = selected.Replace('.', '-');
                     //Convert.ToDateTime(selected);
                     //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `class` = '" + listBox5.SelectedItem.ToString() + "'", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `class` = '" + listBox5.SelectedItem.ToString() + "'", DB.GetConnection());
                     //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
@@ -278,48 +273,13 @@ namespace Booking
                         listBox3.Items.Add(reader[3]);
                         listBox4.Items.Add(reader[4]);
                     }
-                    DB.closeConnection();
+                    DB.CloseConnection();
                 }
                 catch
                 {
                     MessageBox.Show("Помилка!");
                 }
             }
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_date_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox2_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
-
         }
 
         private void clear_btn_Click(object sender, EventArgs e)
@@ -340,41 +300,6 @@ namespace Booking
             textBox_date_arrival.Clear();
             textBox_class.Clear();
             Fill_lisbox();
-        }
-
-        private void text_from_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label10_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
