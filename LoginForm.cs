@@ -128,5 +128,10 @@ namespace Booking
         {
 
         }
+
+        private void loginField_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

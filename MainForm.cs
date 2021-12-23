@@ -224,10 +224,15 @@ namespace Booking
                         listBox2.Items.Add(reader[2]);
                         listBox5.Items.Add(reader[4]);
                     }
-                    if((text_from.Text != "")
-                    text_to.Clear();
-                    textBox_date_depart.Clear();
-                    textBox_class.Clear();)
+                    if((text_from.Text != "")&&(text_to.Text != "")&&(textBox_date_depart.Text != "")&&(textBox_class.Text != ""))
+                    {
+                        MySqlCommand command1 = new MySqlCommand("SELECT `cost` FROM `trains` WHERE `periodicity` = '" + twice + "' AND `class` = '" + textBox_class.Text + "' AND `city_to` = '" + text_from.Text + "' AND `city_from` = '" + text_to.Text +"'", DB.GetConnection());
+                        MySqlDataReader reader1 = command1.ExecuteReader();
+                        if(reader1.Read())
+                        {
+                            textBox_cost.Text = reader1[0].ToString();
+                        }
+                    }
                     DB.CloseConnection();
                 }
                 catch (Exception x)

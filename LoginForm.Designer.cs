@@ -139,6 +139,7 @@ namespace Booking
             this.loginField.Size = new System.Drawing.Size(353, 56);
             this.loginField.TabIndex = 4;
             this.loginField.Text = "username";
+            this.loginField.TextChanged += new System.EventHandler(this.loginField_TextChanged);
             this.loginField.Enter += new System.EventHandler(this.loginField_Enter);
             this.loginField.Leave += new System.EventHandler(this.loginField_Leave);
             // 
