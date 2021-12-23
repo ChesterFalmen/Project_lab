@@ -39,15 +39,9 @@ namespace Booking
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.text_to = new System.Windows.Forms.TextBox();
-            this.listBox3 = new System.Windows.Forms.ListBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.clear_btn = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_date_depart = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox_date_arrival = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.listBox4 = new System.Windows.Forms.ListBox();
             this.textBox_class = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBox_cost = new System.Windows.Forms.TextBox();
@@ -173,33 +167,11 @@ namespace Booking
             this.text_to.Size = new System.Drawing.Size(165, 26);
             this.text_to.TabIndex = 16;
             // 
-            // listBox3
-            // 
-            this.listBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.listBox3.FormattingEnabled = true;
-            this.listBox3.ItemHeight = 25;
-            this.listBox3.Location = new System.Drawing.Point(40, 345);
-            this.listBox3.Name = "listBox3";
-            this.listBox3.Size = new System.Drawing.Size(226, 129);
-            this.listBox3.TabIndex = 18;
-            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.ForeColor = System.Drawing.SystemColors.Control;
-            this.label6.Location = new System.Drawing.Point(56, 304);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(190, 25);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Дата відправлення";
-            // 
             // clear_btn
             // 
             this.clear_btn.BackColor = System.Drawing.Color.White;
             this.clear_btn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.clear_btn.Location = new System.Drawing.Point(817, 345);
+            this.clear_btn.Location = new System.Drawing.Point(834, 343);
             this.clear_btn.Name = "clear_btn";
             this.clear_btn.Size = new System.Drawing.Size(96, 37);
             this.clear_btn.TabIndex = 20;
@@ -227,52 +199,11 @@ namespace Booking
             this.textBox_date_depart.Size = new System.Drawing.Size(165, 26);
             this.textBox_date_depart.TabIndex = 21;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label8.ForeColor = System.Drawing.SystemColors.Control;
-            this.label8.Location = new System.Drawing.Point(598, 232);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(160, 25);
-            this.label8.TabIndex = 23;
-            this.label8.Text = "Дата прибуття:";
-            // 
-            // textBox_date_arrival
-            // 
-            this.textBox_date_arrival.Enabled = false;
-            this.textBox_date_arrival.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox_date_arrival.Location = new System.Drawing.Point(797, 231);
-            this.textBox_date_arrival.Name = "textBox_date_arrival";
-            this.textBox_date_arrival.Size = new System.Drawing.Size(165, 26);
-            this.textBox_date_arrival.TabIndex = 24;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label9.ForeColor = System.Drawing.SystemColors.Control;
-            this.label9.Location = new System.Drawing.Point(353, 304);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 25);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Дата прибуття";
-            // 
-            // listBox4
-            // 
-            this.listBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.listBox4.FormattingEnabled = true;
-            this.listBox4.ItemHeight = 25;
-            this.listBox4.Location = new System.Drawing.Point(324, 345);
-            this.listBox4.Name = "listBox4";
-            this.listBox4.Size = new System.Drawing.Size(226, 129);
-            this.listBox4.TabIndex = 25;
-            // 
             // textBox_class
             // 
             this.textBox_class.Enabled = false;
             this.textBox_class.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox_class.Location = new System.Drawing.Point(797, 263);
+            this.textBox_class.Location = new System.Drawing.Point(797, 231);
             this.textBox_class.Name = "textBox_class";
             this.textBox_class.Size = new System.Drawing.Size(165, 26);
             this.textBox_class.TabIndex = 28;
@@ -282,7 +213,7 @@ namespace Booking
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label10.ForeColor = System.Drawing.SystemColors.Control;
-            this.label10.Location = new System.Drawing.Point(650, 264);
+            this.label10.Location = new System.Drawing.Point(650, 232);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 25);
             this.label10.TabIndex = 27;
@@ -292,7 +223,7 @@ namespace Booking
             // 
             this.textBox_cost.Enabled = false;
             this.textBox_cost.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.textBox_cost.Location = new System.Drawing.Point(797, 295);
+            this.textBox_cost.Location = new System.Drawing.Point(797, 263);
             this.textBox_cost.Name = "textBox_cost";
             this.textBox_cost.Size = new System.Drawing.Size(165, 26);
             this.textBox_cost.TabIndex = 30;
@@ -302,7 +233,7 @@ namespace Booking
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label11.ForeColor = System.Drawing.SystemColors.Control;
-            this.label11.Location = new System.Drawing.Point(607, 295);
+            this.label11.Location = new System.Drawing.Point(607, 263);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(151, 25);
             this.label11.TabIndex = 29;
@@ -324,7 +255,7 @@ namespace Booking
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.label12.ForeColor = System.Drawing.SystemColors.Control;
-            this.label12.Location = new System.Drawing.Point(118, 519);
+            this.label12.Location = new System.Drawing.Point(118, 319);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 25);
             this.label12.TabIndex = 33;
@@ -335,17 +266,18 @@ namespace Booking
             this.listBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.listBox5.FormattingEnabled = true;
             this.listBox5.ItemHeight = 25;
-            this.listBox5.Location = new System.Drawing.Point(40, 558);
+            this.listBox5.Location = new System.Drawing.Point(40, 358);
             this.listBox5.Name = "listBox5";
             this.listBox5.Size = new System.Drawing.Size(226, 129);
             this.listBox5.TabIndex = 32;
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(558, 495);
+            this.dateTimePicker1.Location = new System.Drawing.Point(324, 358);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(218, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(332, 22);
             this.dateTimePicker1.TabIndex = 34;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // MainForm
             // 
@@ -361,15 +293,9 @@ namespace Booking
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBox_class);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.listBox4);
-            this.Controls.Add(this.textBox_date_arrival);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox_date_depart);
             this.Controls.Add(this.clear_btn);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.listBox3);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.text_to);
             this.Controls.Add(this.label4);
@@ -403,15 +329,9 @@ namespace Booking
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox text_to;
-        private System.Windows.Forms.ListBox listBox3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button clear_btn;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBox_date_depart;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox_date_arrival;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ListBox listBox4;
         private System.Windows.Forms.TextBox textBox_class;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBox_cost;

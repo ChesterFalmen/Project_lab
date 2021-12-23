@@ -14,9 +14,8 @@ namespace Booking
 
             listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             listBox2.SelectedIndexChanged += listBox2_SelectedIndexChanged;
-            listBox3.SelectedIndexChanged += listBox3_SelectedIndexChanged;
-            listBox4.SelectedIndexChanged += listBox4_SelectedIndexChanged;
             listBox5.SelectedIndexChanged += listBox5_SelectedIndexChanged;
+            dateTimePicker1.MinDate = DateTime.Today;
         }
 
         private void Fill_lisbox()
@@ -40,10 +39,9 @@ namespace Booking
                 {
                     listBox1.Items.Add(reader[1]);
                     listBox2.Items.Add(reader[2]);
-                    listBox3.Items.Add(reader[3]);
-                    listBox4.Items.Add(reader[4]);
-                    listBox5.Items.Add(reader[5]);
+                    listBox5.Items.Add(reader[4]);
                 }
+                dateTimePicker1.CustomFormat = "ddMMMMyyyy dddd";
                 DB.CloseConnection();
             }
             catch
@@ -94,13 +92,11 @@ namespace Booking
                     MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_from` = '" + listBox1.SelectedItem.ToString() + "'", DB.GetConnection());
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox2.Items.Clear();
-                    listBox3.Items.Clear();
                     listBox5.Items.Clear();
                     while (reader.Read())
                     {
                         listBox2.Items.Add(reader[2]);
-                        listBox3.Items.Add(reader[3]);
-                        listBox5.Items.Add(reader[5]);
+                        listBox5.Items.Add(reader[4]);
                     }
                     DB.CloseConnection();
                 }
@@ -132,13 +128,11 @@ namespace Booking
                     MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `city_to` = '" + listBox2.SelectedItem.ToString() + "'", DB.GetConnection());
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
-                    listBox3.Items.Clear();
                     listBox5.Items.Clear();
                     while (reader.Read())
                     {
                         listBox1.Items.Add(reader[1]);
-                        listBox3.Items.Add(reader[3]);
-                        listBox5.Items.Add(reader[5]);
+                        listBox5.Items.Add(reader[4]);
                     }
                     DB.CloseConnection();
                 }
@@ -148,94 +142,6 @@ namespace Booking
                 }
             }
 
-        }
-
-        private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox3.SelectedItem != null)
-            {
-                string date_selected = listBox3.SelectedItem.ToString();
-                textBox_date_depart.Text = date_selected;
-
-                try
-                {
-                    DB DB = new DB();
-                    DB.OpenConnection();
-
-                    if (DB.GetConnection() == null)
-                    {
-                        MessageBox.Show("Немає підключення до бази даних!");
-                        return;
-                    }
-                    //string selected = listBox3.SelectedItem.ToString();
-                    //selected = selected.Replace('.', '-');
-                    //Convert.ToDateTime(selected);
-                    //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_depart` = '" + listBox3.SelectedItem.ToString() + "'", DB.GetConnection());
-                    //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
-                    MySqlDataReader reader = command.ExecuteReader();
-                    listBox1.Items.Clear();
-                    listBox2.Items.Clear();
-                    listBox4.Items.Clear();
-                    listBox5.Items.Clear();
-                    while (reader.Read())
-                    {
-                        listBox1.Items.Add(reader[1]);
-                        listBox2.Items.Add(reader[2]);
-                        listBox4.Items.Add(reader[4]);
-                        listBox5.Items.Add(reader[5]);
-                    }
-                    DB.CloseConnection();
-                }
-                catch
-                {
-                    MessageBox.Show("Помилка!");
-                }
-            }
-        }
-
-        private void listBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (listBox4.SelectedItem != null)
-            {
-                string date_selected = listBox4.SelectedItem.ToString();
-                textBox_date_arrival.Text = date_selected;
-
-                try
-                {
-                    DB DB = new DB();
-                    DB.OpenConnection();
-
-                    if (DB.GetConnection() == null)
-                    {
-                        MessageBox.Show("Немає підключення до бази даних!");
-                        return;
-                    }
-                    //string selected = listBox3.SelectedItem.ToString();
-                    //selected = selected.Replace('.', '-');
-                    //Convert.ToDateTime(selected);
-                    //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
-                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `date_arrival` = '" + listBox4.SelectedItem.ToString() + "'", DB.GetConnection());
-                    //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
-                    MySqlDataReader reader = command.ExecuteReader();
-                    listBox1.Items.Clear();
-                    listBox2.Items.Clear();
-                    listBox3.Items.Clear();
-                    listBox5.Items.Clear();
-                    while (reader.Read())
-                    {
-                        listBox1.Items.Add(reader[1]);
-                        listBox2.Items.Add(reader[2]);
-                        listBox3.Items.Add(reader[3]);
-                        listBox5.Items.Add(reader[5]);
-                    }
-                    DB.CloseConnection();
-                }
-                catch
-                {
-                    MessageBox.Show("Помилка!");
-                }
-            }
         }
 
         private void listBox5_SelectedIndexChanged(object sender, EventArgs e)
@@ -255,23 +161,14 @@ namespace Booking
                         MessageBox.Show("Немає підключення до бази даних!");
                         return;
                     }
-                    //string selected = listBox3.SelectedItem.ToString();
-                    //selected = selected.Replace('.', '-');
-                    //Convert.ToDateTime(selected);
-                    //SELECT DATE_FORMAT("2008-11-19",'%d.%m.%Y');
                     MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `class` = '" + listBox5.SelectedItem.ToString() + "'", DB.GetConnection());
-                    //SELECT* from trains WHERE `date_depart` = '2021-10-01 10:20:00';
                     MySqlDataReader reader = command.ExecuteReader();
                     listBox1.Items.Clear();
                     listBox2.Items.Clear();
-                    listBox3.Items.Clear();
-                    listBox4.Items.Clear();
                     while (reader.Read())
                     {
                         listBox1.Items.Add(reader[1]);
                         listBox2.Items.Add(reader[2]);
-                        listBox3.Items.Add(reader[3]);
-                        listBox4.Items.Add(reader[4]);
                     }
                     DB.CloseConnection();
                 }
@@ -286,20 +183,58 @@ namespace Booking
         {
             listBox1.SelectedItem = null;
             listBox2.SelectedItem = null;
-            listBox3.SelectedItem = null;
-            listBox4.SelectedItem = null;
             listBox5.SelectedItem = null;
             listBox1.Items.Clear();
             listBox2.Items.Clear();
-            listBox3.Items.Clear();
-            listBox4.Items.Clear();
             listBox5.Items.Clear();
             text_from.Clear();
             text_to.Clear();
             textBox_date_depart.Clear();
-            textBox_date_arrival.Clear();
             textBox_class.Clear();
             Fill_lisbox();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            textBox_date_depart.Text = dateTimePicker1.Value.ToString();
+            if (dateTimePicker1.Value != null)
+            {
+                DateTime date = dateTimePicker1.Value;
+                try
+                {
+                    DB DB = new DB();
+                    DB.OpenConnection();
+                    if(date.Year > 2022)
+                        throw new Exception("Не можна більше 2022 року!");
+
+                    if (DB.GetConnection() == null)
+                        throw new Exception("Немає підключення до бази даних!");
+                    short twice = 0;
+                    if (date.Day % 2 == 0)
+                        twice = 1;
+                    MySqlCommand command = new MySqlCommand("SELECT * FROM `trains` WHERE `periodicity` = '" + twice + "'", DB.GetConnection());
+                    MySqlDataReader reader = command.ExecuteReader();
+                    listBox1.Items.Clear();
+                    listBox2.Items.Clear();
+                    listBox5.Items.Clear();
+                    while (reader.Read())
+                    {
+                        listBox1.Items.Add(reader[1]);
+                        listBox2.Items.Add(reader[2]);
+                        listBox5.Items.Add(reader[4]);
+                    }
+                    if((text_from.Text != "")
+                    text_to.Clear();
+                    textBox_date_depart.Clear();
+                    textBox_class.Clear();)
+                    DB.CloseConnection();
+                }
+                catch (Exception x)
+                {
+                    MessageBox.Show($"Помилка: {x.Message}");
+                }
+            }
         }
     }
 }
