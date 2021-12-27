@@ -191,5 +191,10 @@ namespace Booking
             LoginForm loginform = new LoginForm();
             loginform.Show();
         }
+
+        private void mainpanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

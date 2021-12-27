@@ -133,6 +133,7 @@ namespace Booking
             this.mainpanel.Name = "mainpanel";
             this.mainpanel.Size = new System.Drawing.Size(548, 694);
             this.mainpanel.TabIndex = 1;
+            this.mainpanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainpanel_Paint);
             this.mainpanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainpanel_MouseDown);
             this.mainpanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainpanel_MouseMove);
             // 
