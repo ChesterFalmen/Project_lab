@@ -5,26 +5,28 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
+using System.Data;
 
 namespace Booking
 {
-    class Train
+    class Train : Trip
     {
         private Int32 _id { get; set; }
         private string _city_from { get; set; }
         private string _city_to { get; set; }
-        private DateTime _date { get; set; }
-        private Int16 _class { get; set; }
+        //private DateTime _date { get; set; }
+        private Int32 _class { get; set; }
         private Int16 _periodicity { get; set; }
 
         public List<Train> list_trains = new List<Train>();
 
-        public Int32 GetId() { return this._id; }
+        public Int32 GetID() { return this._id; }
         public string GetFrom() { return this._city_from; }
         public string GetTo() { return this._city_to; }
-        public DateTime GetDate() { return this._date; }
-        public Int16 GetClass() { return this._class; }
+        //public DateTime GetDate() { return this._date; }
+        public Int32 GetClass() { return this._class; }
         public Int16 GetPeriod() { return this._periodicity; }
+        Trip trip = new Trip();
 
         public void Fill()
         {
@@ -107,13 +109,14 @@ namespace Booking
                 while (reader.Read())
                 {
                     dates.Add(Convert.ToDateTime(reader[0]));
+                    trip.Fill(id);
                 }
             }
 
             DB.CloseConnection();
             return dates;
         }
-        public void CreateTicket(string from, string to)
+        public void CreateTicket(string from, string to, DateTime date)
         {
             int id = -1;
             DB DB = new DB();
@@ -128,26 +131,46 @@ namespace Booking
                     break;
                 }
             }
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `trip` WHERE `date` = '" + list_trains[id].GetDate() + "'", DB.GetConnection());
-            MySqlDataReader reader;
-            if(command.ExecuteNonQuery() == 1)
-            {
-                MySqlCommand command2 = new MySqlCommand("UPDATE `trip` SET `count_class_first` = `count_class_first` - 1 WHERE `date` =  '" + list_trains[id].GetDate() + "'", DB.GetConnection());
-                MySqlDataReader reader2 = command2.ExecuteReader();
-            }
+            DataTable table = new DataTable();
 
-            MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('" + id + "', '" + list_trains[id].GetDate() + "', '10', '15', '25');", DB.GetConnection());
-            //command.Parameters.Add("@id", MySqlDbType.Int32).Value = list_trains[id].GetId();
-            MySqlDataReader reader1;
-            if (command1.ExecuteNonQuery() == 1)
-            {
-                MessageBox.Show("Замовлення успішно створене!");
-            }
-            else
-            {
-                MessageBox.Show("Помилка!");
-            }
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
 
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `trip` WHERE `date` = '" + date.Year + "-" + date.Month +"-"+ date.Day +"' AND `id` = '" + id + "'", DB.GetConnection());
+            adapter.SelectCommand = command;
+            adapter.Fill(table);
+            string class_format = null;
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show(list_trains[id].GetClass().ToString());
+                if(list_trains[id].GetClass() == 1)
+                {
+                    return;
+                }
+                MySqlCommand command2 = new MySqlCommand("UPDATE `trip` SET `" + class_format + "` = `" + class_format + "` - 1 WHERE `date` =  '" + date.Year + "-" + date.Month + "-" + date.Day + "'AND `id` = '" + id + "'", DB.GetConnection());
+                //MySqlDataReader reader;
+                if (command2.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Замовлення успішно створене!");
+                }
+                else
+                {
+                    MessageBox.Show("Помилка!");
+                }
+            }
+            else 
+            {
+                MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('" + id + "', '" + date.Year + "-" + date.Month + "-" + date.Day + "', '10', '15', '25');", DB.GetConnection());
+                //command.Parameters.Add("@id", MySqlDbType.Int32).Value = list_trains[id].GetId();
+                if (command1.ExecuteNonQuery() == 1)
+                {
+                    MessageBox.Show("Замовлення успішно створене!");
+                }
+                else
+                {
+                    MessageBox.Show("Помилка!");
+                }
+            }
             DB.CloseConnection();
         }
     }

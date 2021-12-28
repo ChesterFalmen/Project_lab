@@ -122,7 +122,7 @@ namespace Booking
 
                     for (int i = 0; i < dates.Count; i++)
                     {
-                        comboBox1.Items.Add(dates[i].ToString("dd.MM.yyyy"));
+                        comboBox1.Items.Add(dates[i]);
                     }
                 }
                 catch (Exception x)
@@ -144,6 +144,8 @@ namespace Booking
             textBox_date_depart.Clear();
             textBox_class.Clear();
             textBox_name.Clear();
+            comboBox1.Text = "";
+            comboBox1.Items.Clear();
             Fill_listbox();
         }
         //private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -219,34 +221,21 @@ namespace Booking
             {
                 try
                 {
-                    trains.CreateTicket(textBox_from.Text, textBox_to.Text);
-                    //try
-                    //{
-                    //    if (command.ExecuteNonQuery() == 1)
-                    //    {
-                    //        MessageBox.Show("Замовлення сформовано успішно!");
-                    //    }
-                    //}
-                    //catch (Exception ex)
-                    //{
-                    //    Exception error = new Exception("Щось пішло не так!", ex);
-                    //    throw error;
-                    //}
-                    //finally
-                    //{
-                    //    listBox_from.SelectedItem = null;
-                    //    listBox_to.SelectedItem = null;
-                    //    listBox_class.SelectedItem = null;
-                    //    listBox_from.Items.Clear();
-                    //    listBox_to.Items.Clear();
-                    //    listBox_class.Items.Clear();
-                    //    textBox_from.Clear();
-                    //    textBox_to.Clear();
-                    //    textBox_date_depart.Clear();
-                    //    textBox_class.Clear();
-                    //    textBox_name.Clear();
-                    //    Fill_listbox();
-                    //}
+                    DateTime date = Convert.ToDateTime(comboBox1.Text);
+                    trains.CreateTicket(textBox_from.Text, textBox_to.Text, date);
+
+                    listBox_from.SelectedItem = null;
+                    listBox_to.SelectedItem = null;
+                    listBox_class.SelectedItem = null;
+                    listBox_from.Items.Clear();
+                    listBox_to.Items.Clear();
+                    listBox_class.Items.Clear();
+                    textBox_from.Clear();
+                    textBox_to.Clear();
+                    textBox_date_depart.Clear();
+                    textBox_class.Clear();
+                    textBox_name.Clear();
+                    Fill_listbox();
                 }
                 catch (Exception x)
                 {
@@ -257,13 +246,14 @@ namespace Booking
 
         private void button_date_Click(object sender, EventArgs e)
         {
-            if ((comboBox1.SelectedItem == null) || (comboBox1.Text == ""))
+            if (comboBox1.Text == "")
             {
                 errorProvider1.SetError(comboBox1, "Введіть дату!");
             }
             else 
             {
                 errorProvider1.Clear();
+                textBox_date_depart.Text = comboBox1.Text;
             }
         }
     }

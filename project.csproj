@@ -79,6 +79,7 @@
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Train.cs" />
+    <Compile Include="Trip.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
       <SubType>Designer</SubType>
