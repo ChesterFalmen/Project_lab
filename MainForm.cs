@@ -222,7 +222,7 @@ namespace Booking
                 try
                 {
                     DateTime date = Convert.ToDateTime(comboBox1.Text);
-                    trains.CreateTicket(textBox_from.Text, textBox_to.Text, date);
+                    trains.CreateTicket(textBox_from.Text, textBox_to.Text, date, textBox_name.Text);
 
                     listBox_from.SelectedItem = null;
                     listBox_to.SelectedItem = null;
@@ -235,6 +235,8 @@ namespace Booking
                     textBox_date_depart.Clear();
                     textBox_class.Clear();
                     textBox_name.Clear();
+                    comboBox1.Items.Clear();
+                    comboBox1.Text = "";
                     Fill_listbox();
                 }
                 catch (Exception x)

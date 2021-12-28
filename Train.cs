@@ -116,7 +116,7 @@ namespace Booking
             DB.CloseConnection();
             return dates;
         }
-        public void CreateTicket(string from, string to, DateTime date)
+        public void CreateTicket(string from, string to, DateTime date, string _name)
         {
             int id = -1;
             DB DB = new DB();
@@ -159,7 +159,16 @@ namespace Booking
                 command2.Connection = DB.GetConnection();
                 if (command2.ExecuteNonQuery() == 1)
                 {
-                    MessageBox.Show("Замовлення успішно створене!");
+                    MySqlCommand command3 = new MySqlCommand("INSERT INTO `project_program`.`tickets` (`id_ticket`, `name`, `city_from`, `city_to`, `class`) VALUES ('', '" + _name + "', '" + list_trains[id].GetFrom() + "', '" + list_trains[id].GetTo() + "', '" + (list_trains[id].GetClass()+1) + "')", DB.GetConnection());
+                    if (command3.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Замовлення успішно створене!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Помилка!");
+                    }
+
                 }
                 else
                 {
