@@ -142,13 +142,21 @@ namespace Booking
 
             if (table.Rows.Count > 0)
             {
-                MessageBox.Show(list_trains[id].GetClass().ToString());
-                if(list_trains[id].GetClass() == 1)
+                MySqlCommand command2 = new MySqlCommand();
+
+                if (Convert.ToInt32(list_trains[id].GetClass()+1) == 1)
                 {
-                    return;
+                    command2.CommandText = "UPDATE `trip` SET `count_class_first` = `count_class_first` - 1 WHERE `date` =  '" + date.Year + "-" + date.Month + "-" + date.Day + "'AND `id` = '" + id + "'";
                 }
-                MySqlCommand command2 = new MySqlCommand("UPDATE `trip` SET `" + class_format + "` = `" + class_format + "` - 1 WHERE `date` =  '" + date.Year + "-" + date.Month + "-" + date.Day + "'AND `id` = '" + id + "'", DB.GetConnection());
-                //MySqlDataReader reader;
+                else if(Convert.ToInt32(list_trains[id].GetClass() + 1) == 2)
+                {
+                    command2.CommandText = "UPDATE `trip` SET `count_class_second` = `count_class_second` - 1 WHERE `date` =  '" + date.Year + "-" + date.Month + "-" + date.Day + "'AND `id` = '" + id + "'";
+                }
+                else
+                {
+                    command2.CommandText = "UPDATE `trip` SET `count_class_third` = `count_class_third` - 1 WHERE `date` =  '" + date.Year + "-" + date.Month + "-" + date.Day + "'AND `id` = '" + id + "'";
+                }
+                command2.Connection = DB.GetConnection();
                 if (command2.ExecuteNonQuery() == 1)
                 {
                     MessageBox.Show("Замовлення успішно створене!");
@@ -160,7 +168,7 @@ namespace Booking
             }
             else 
             {
-                MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('" + id + "', '" + date.Year + "-" + date.Month + "-" + date.Day + "', '10', '15', '25');", DB.GetConnection());
+                MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('" + (id + 1) + "', '" + date.Year + "-" + date.Month + "-" + date.Day + "', '10', '15', '25');", DB.GetConnection());
                 //command.Parameters.Add("@id", MySqlDbType.Int32).Value = list_trains[id].GetId();
                 if (command1.ExecuteNonQuery() == 1)
                 {
