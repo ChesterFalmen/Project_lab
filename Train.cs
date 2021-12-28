@@ -116,6 +116,24 @@ namespace Booking
             DB.CloseConnection();
             return dates;
         }
+        public void CreateTicket(string _name, List<Train> t, Int32 id)
+        {
+            DB DB = new DB();
+            DB.OpenConnection();
+            if (DB.GetConnection() == null)
+                throw new Exception("Немає підключення до бази даних!");
+
+            MySqlCommand command3 = new MySqlCommand("INSERT INTO `project_program`.`tickets` (`id_ticket`, `name`, `city_from`, `city_to`, `class`) VALUES ('', '" + _name + "', '" + t[id].GetFrom() + "', '" + t[id].GetTo() + "', '" + (t[id].GetClass() + 1) + "')", DB.GetConnection());
+            if (command3.ExecuteNonQuery() == 1)
+            {
+                MessageBox.Show("Замовлення успішно створене!");
+            }
+            else
+            {
+                MessageBox.Show("Помилка!");
+            }
+            DB.CloseConnection();
+        }
         public void CreateTicket(string from, string to, DateTime date, string _name)
         {
             int id = -1;
@@ -159,15 +177,16 @@ namespace Booking
                 command2.Connection = DB.GetConnection();
                 if (command2.ExecuteNonQuery() == 1)
                 {
-                    MySqlCommand command3 = new MySqlCommand("INSERT INTO `project_program`.`tickets` (`id_ticket`, `name`, `city_from`, `city_to`, `class`) VALUES ('', '" + _name + "', '" + list_trains[id].GetFrom() + "', '" + list_trains[id].GetTo() + "', '" + (list_trains[id].GetClass()+1) + "')", DB.GetConnection());
-                    if (command3.ExecuteNonQuery() == 1)
-                    {
-                        MessageBox.Show("Замовлення успішно створене!");
-                    }
-                    else
-                    {
-                        MessageBox.Show("Помилка!");
-                    }
+                    CreateTicket(_name, list_trains, id);
+                    //MySqlCommand command3 = new MySqlCommand("INSERT INTO `project_program`.`tickets` (`id_ticket`, `name`, `city_from`, `city_to`, `class`) VALUES ('', '" + _name + "', '" + list_trains[id].GetFrom() + "', '" + list_trains[id].GetTo() + "', '" + (list_trains[id].GetClass()+1) + "')", DB.GetConnection());
+                    //if (command3.ExecuteNonQuery() == 1)
+                    //{
+                    //    MessageBox.Show("Замовлення успішно створене!");
+                    //}
+                    //else
+                    //{
+                    //    MessageBox.Show("Помилка!");
+                    //}
 
                 }
                 else
@@ -177,10 +196,11 @@ namespace Booking
             }
             else 
             {
-                MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('" + (id + 1) + "', '" + date.Year + "-" + date.Month + "-" + date.Day + "', '10', '15', '25');", DB.GetConnection());
-                //command.Parameters.Add("@id", MySqlDbType.Int32).Value = list_trains[id].GetId();
+                MySqlCommand command1 = new MySqlCommand("INSERT INTO `project_program`.`trip` (`id`, `date`, `count_class_first`, `count_class_second`, `count_class_third`) VALUES ('@id', '" + date.Year + "-" + date.Month + "-" + date.Day + "', '10', '15', '25');", DB.GetConnection());
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = list_trains[id].GetId() + 1;
                 if (command1.ExecuteNonQuery() == 1)
                 {
+                    CreateTicket(_name, list_trains, id);
                     MessageBox.Show("Замовлення успішно створене!");
                 }
                 else
