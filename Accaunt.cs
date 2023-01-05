@@ -9,6 +9,6 @@ namespace ExampleSQLApp
     public class Accaunt
     {
         string username;
-        string password;
+        string password
     }
 }
