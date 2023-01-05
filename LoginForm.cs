@@ -97,7 +97,7 @@ namespace ExampleSQLApp
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL AND `password` = @uP", DB.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `username` = @uL AND `password` = @uP", DB.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginUser;
             command.Parameters.Add("@uP", MySqlDbType.VarChar).Value = passUser;
 
@@ -169,5 +169,7 @@ namespace ExampleSQLApp
                 passField.ForeColor = Color.Black;
             }
         }
+
+       
     }
 }

@@ -116,6 +116,7 @@ namespace ExampleSQLApp
             // mainpanel
             // 
             this.mainpanel.AutoSize = true;
+            this.mainpanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.mainpanel.Controls.Add(this.linkLabel1);
             this.mainpanel.Controls.Add(this.textBox2);
             this.mainpanel.Controls.Add(this.textBox1);
@@ -154,7 +155,7 @@ namespace ExampleSQLApp
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox2.Location = new System.Drawing.Point(3, 260);
@@ -169,7 +170,7 @@ namespace ExampleSQLApp
             // 
             // textBox1
             // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Cursor = System.Windows.Forms.Cursors.Default;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));

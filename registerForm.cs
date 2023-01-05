@@ -1,13 +1,17 @@
 ﻿using MySql.Data.MySqlClient;
+using Org.BouncyCastle.Utilities.Collections;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Xml.Linq;
 
 namespace ExampleSQLApp
 {
@@ -145,37 +149,43 @@ namespace ExampleSQLApp
             }
             else
             {
-                db DB = new db();
-                if (!DB.openConnection())
+                using (MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=root;database=busbooking"))
                 {
-                    MessageBox.Show("Немає підключення до бази даних!");
-                    return;
-                }
+                    connection.Open();
 
-                if (isUserExists())
-                { 
-                    return; 
-                }
-                MySqlCommand command = new MySqlCommand("INSERT INTO `project_program`.`users` (`login`, `password`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", DB.getConnection());
+                    if (!connection.Ping())
+                    {
+                        MessageBox.Show("Немає підключення до бази даних!");
+                        return;
+                    }
 
-                command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
-                command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
-                command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
-                command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSurNameField.Text;
+                    if (isUserExists())
+                    {
+                        return;
+                    }
+                    //MySqlCommand command = new MySqlCommand("INSERT INTO `users` (`username`, `password`, `name`, `surname`) VALUES (@login, @pass, @name, @surname)", DB.getConnection());
+                    MySqlCommand command = new MySqlCommand("INSERT INTO `users`(`name`, `surname`, `username`, `password`) VALUES(@name, @surname, @login, @pass)", connection);
 
-                if (command.ExecuteNonQuery() == 1)
-                {
-                    MessageBox.Show("Аккаунт був успішно створений!");
-                    this.Hide();
-                    LoginForm loginform = new LoginForm();
-                    loginform.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Аккаунт не був створений!");
-                }
 
-                DB.closeConnection();
+                    command.Parameters.Add("@login", MySqlDbType.VarChar).Value = loginField.Text;
+                    command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passField.Text;
+                    command.Parameters.Add("@name", MySqlDbType.VarChar).Value = userNameField.Text;
+                    command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = userSurNameField.Text;
+
+                    //command.ExecuteNonQuery();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        MessageBox.Show("Аккаунт був успішно створений!");
+                        this.Hide();
+                        LoginForm loginform = new LoginForm();
+                        loginform.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Аккаунт не був створений!");
+                    }
+
+                }
             }
         }
         public Boolean isUserExists()
@@ -186,7 +196,7 @@ namespace ExampleSQLApp
 
             MySqlDataAdapter adapter = new MySqlDataAdapter();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `login` = @uL", DB.getConnection());
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `users` WHERE  `username` = @uL", DB.getConnection());
             command.Parameters.Add("@uL", MySqlDbType.VarChar).Value = loginField.Text;
 
             adapter.SelectCommand = command;
@@ -201,7 +211,7 @@ namespace ExampleSQLApp
             {
                 return false;
             }
-            
+
         }
 
         private void exit_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

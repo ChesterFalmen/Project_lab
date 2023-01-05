@@ -9,9 +9,8 @@ namespace ExampleSQLApp
 {
     class db
     {
-        string string_connection = "server=localhost;port=3306;username=root;password=;database=project_program";
-        MySqlConnection connection = new MySqlConnection("server=localhost;port=3306;username=root;password=;database=project_program");
-    
+        static string string_connection = "server=localhost;port=3306;username=root;password=root;database=busbooking";
+        MySqlConnection connection = new MySqlConnection(string_connection);
         public bool openConnection()
         {
             if(connection.State == System.Data.ConnectionState.Closed)

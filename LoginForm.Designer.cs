@@ -46,7 +46,7 @@ namespace ExampleSQLApp
             // 
             // mainpanel
             // 
-            this.mainpanel.BackColor = System.Drawing.SystemColors.Control;
+            this.mainpanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.mainpanel.Controls.Add(this.linkLabel1);
             this.mainpanel.Controls.Add(this.exit);
             this.mainpanel.Controls.Add(this.buttonLogin);
